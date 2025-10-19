@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-departments',
   imports: [],
   templateUrl: './departments.html',
-  styleUrl: './departments.css'
+  styleUrls: ['./departments.css'] 
 })
 export class DepartmentsComponent {
 
