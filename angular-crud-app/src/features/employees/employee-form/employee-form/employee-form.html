@@ -9,7 +9,7 @@
                 <div class="col-md-3 mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input formControlName="name" type="text" id="name" name="name" class="form-control" required minlength="2" />
-                    @if (name?.invalid && (name?.dirty || name?.touched)){
+                    @if (name?.invalid && (name?.touched)){
                     <div class="text-danger small">
                         Full name is required (min 2 chars).
                     </div>
@@ -48,7 +48,7 @@
 
             <div class="d-flex gap-2 mt-3">
                 <button type="submit" class="btn btn-primary" [disabled]="busy || form.invalid"> {{ submitLabel }}</button>
-                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
             </div>
         </div>
     </div>

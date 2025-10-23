@@ -33,7 +33,7 @@ export class EmployeeForm implements OnChanges {
   departmentsError = signal<string | null>(null);
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(2)]),
     position: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     departmentId: new FormControl<number | null>(null, [Validators.required])
@@ -41,9 +41,7 @@ export class EmployeeForm implements OnChanges {
   get name() {
     return this.form.get('name');
   }
-  get email() {
-    return this.form.get('email');
-  }
+  
   ngOnChanges(changes: SimpleChanges): void {
     if (this.employee) {
       const { id, ...rest } = this.employee;
