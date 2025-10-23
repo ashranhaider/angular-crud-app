@@ -10,7 +10,7 @@ export interface Employee {
 }
 
 export interface CreateEmployeeDto {
-  name: string;
+  fullName: string;
   email: string;
   position: string;
   departmentId: number | null;

@@ -1,1 +1,2 @@
-<employee-form></employee-form>
+<employee-form [submitLabel]="'Create'" [busy]="busy" (save)="create($event)" (cancel)="goBack()">
+    ></employee-form>

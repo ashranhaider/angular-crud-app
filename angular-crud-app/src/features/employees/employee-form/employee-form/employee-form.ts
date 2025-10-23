@@ -81,13 +81,13 @@ export class EmployeeForm implements OnChanges {
     // Optional: trim strings
     const trimmed: EmployeeFormValue = {
       ...value,
-      name: value.name ? value.name?.trim() : '',
+      fullName: value.name ? value.name?.trim() : '',
       email: value.email ? value.email?.trim() : '',
       position: value.position ? value.position?.trim() : '',
       departmentId: value.departmentId
     };
     console.log(trimmed);
-    //this.save.emit(trimmed);
+    this.save.emit(trimmed);
   }
 
   onCancel(): void {
