@@ -6,7 +6,7 @@ import { routes } from './app.routes';
 
 import { baseUrlInterceptor } from './core/interceptors/base-url.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes), provideClientHydration(withEventReplay()),
      provideHttpClient(
+      withFetch(),
       withInterceptors([baseUrlInterceptor, errorInterceptor])
     ),
   ]

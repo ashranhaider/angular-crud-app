@@ -1,3 +1,5 @@
+import { Department } from "../../departments/data-access/department-model";
+
 export interface Employee {
   id: number;
   fullName: string;
@@ -6,14 +8,12 @@ export interface Employee {
   departmentId: number;
   department?: Department;
 }
-export interface Department {
-  id: number;
-  name: string;
-}
+
 export interface CreateEmployeeDto {
   name: string;
   email: string;
-  departmentId: number;
+  position: string;
+  departmentId: number | null;
 }
 
 export type UpdateEmployeeDto = Partial<CreateEmployeeDto>;

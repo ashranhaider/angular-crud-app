@@ -1,35 +1,48 @@
 <h1>Create Employee</h1>
 <p>Use this form to create employee data.</p>
-<form class="container mt-3">
+<form class="container mt-3" [formGroup]="form" (ngSubmit)="submit()">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title mb-3">Create Employee</h5>
 
             <div class="row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" class="form-control" required minlength="2" />
-                    <!-- <div *ngIf="nameModel.invalid && nameModel.touched" class="text-danger small">
-            Full name is required (min 2 chars).
-          </div> -->
+                    <input formControlName="name" type="text" id="name" name="name" class="form-control" required minlength="2" />
+                    @if (name?.invalid && (name?.dirty || name?.touched)){
+                    <div class="text-danger small">
+                        Full name is required (min 2 chars).
+                    </div>
+                    }
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input formControlName="email" type="text" id="position" name="email" class="form-control" required />
+                   
+                    <div *ngIf="(form.get('email')?.errors?.['email'] || form.get('email')?.invalid) && (form.get('email')?.touched)" class="text-danger small" class="text-danger small">
+                        Email is required and must be valid.
+                    </div>
+                    
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="position" class="form-label">Position</label>
-                    <input type="text" id="position" name="position" class="form-control" required />
-                    <!-- <div *ngIf="posModel.invalid && posModel.touched" class="text-danger small">
-            Position is required.
-          </div> -->
+                    <input formControlName="position" type="text" id="position" name="position" class="form-control" required />
+                    <div *ngIf="form.get('position')?.invalid && form.get('position')?.touched" class="text-danger small">
+                        Position is required.
+                    </div>
                 </div>
+
                 <div class="col-md-3 mb-3">
                     <label for="departmentId" class="form-label">Department</label>
-                    <select id="departmentId" name="departmentId" class="form-select" required>
-                        <option value="">Select department...</option>
-
+                    <select formControlName="departmentId" id="departmentId" name="departmentId" class="form-select" required>
+                        <option [ngValue]="null">Select department...</option>
+                        <option *ngFor="let dept of departments()" [ngValue]="dept.id">{{ dept.name }}</option>
                     </select>
-                    <!-- <div *ngIf="deptModel.invalid && deptModel.touched" class="text-danger small">
-            Department is required.
-          </div> -->
+                    <div *ngIf="form.get('departmentId')?.errors && form.get('departmentId')?.touched && form.get('departmentId')?.errors?.['required']" class="text-danger small">
+                        Department is required.
+                    </div>
                 </div>
             </div>
 
