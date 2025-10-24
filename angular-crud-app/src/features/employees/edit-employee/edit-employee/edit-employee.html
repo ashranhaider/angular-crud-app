@@ -1,0 +1,9 @@
+<h2>Edit Employee</h2>
+
+<ng-container *ngIf="employee as emp; else loading">
+    <employee-form [employee]="emp" [submitLabel]="'Update'" [busy]="busy" (save)="update(emp.id, $event)"
+        (cancel)="goBack()">
+    </employee-form>
+</ng-container>
+
+<ng-template #loading>Loading...</ng-template>

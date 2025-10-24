@@ -3,7 +3,7 @@ import { Department } from "../../departments/data-access/department-model";
 export interface Employee {
   id: number;
   fullName: string;
-  email: string;
+  //email: string;
   position: string;
   departmentId: number;
   department?: Department;
@@ -11,7 +11,7 @@ export interface Employee {
 
 export interface CreateEmployeeDto {
   fullName: string;
-  email: string;
+  //email: string;
   position: string;
   departmentId: number | null;
 }

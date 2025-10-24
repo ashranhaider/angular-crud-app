@@ -38,7 +38,7 @@
           <td>{{ emp.position }}</td>
           <td>{{ emp.department?.name ?? 'No department' }}</td>
           <td class="text-start">
-                <button class="btn btn-sm  btn-warning">Edit</button>
+                <a class="btn btn-sm  btn-warning" routerLink="/editemployees/{{emp.id}}">Edit</a>
                 <button class="ms-2 btn btn-sm btn-danger">Delete</button>
           </td>
         </tr>

@@ -33,13 +33,13 @@ export class EmployeeForm implements OnChanges {
   departmentsError = signal<string | null>(null);
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(2)]),
+    fullName: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(2)]),
     position: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    //email: new FormControl('', [Validators.required, Validators.email]),
     departmentId: new FormControl<number | null>(null, [Validators.required])
   });
   get name() {
-    return this.form.get('name');
+    return this.form.get('fullName');
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,7 +63,7 @@ export class EmployeeForm implements OnChanges {
       },
       error: (err) => {
         console.error(err);
-        this.departmentsError.set('Failed to load employees');
+        this.departmentsError.set('Failed to load departments');
         console.log(err);
         this.departmentsLoading.set(false);
       },
@@ -79,8 +79,8 @@ export class EmployeeForm implements OnChanges {
     // Optional: trim strings
     const trimmed: EmployeeFormValue = {
       ...value,
-      fullName: value.name ? value.name?.trim() : '',
-      email: value.email ? value.email?.trim() : '',
+      fullName: value.fullName ? value.fullName?.trim() : '',
+      //email: value.email ? value.email?.trim() : '',
       position: value.position ? value.position?.trim() : '',
       departmentId: value.departmentId
     };
