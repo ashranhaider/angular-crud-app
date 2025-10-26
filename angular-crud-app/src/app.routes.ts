@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { ShellComponent } from './layout/shell/shell.component';
 import { HomeComponent } from './features/home-component/home-component';
 import { EmployeesComponent } from './features/employees/list-employees/employees';
-import { DepartmentsComponent } from './features/departments/departments';
+import { DepartmentsComponent } from './features/departments/list-departments/departments';
 import { AddEmployee } from './features/employees/add-employee/add-employee/add-employee';
 import { EditEmployee } from './features/employees/edit-employee/edit-employee/edit-employee';
 

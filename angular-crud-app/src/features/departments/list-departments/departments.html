@@ -18,39 +18,15 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
-              <th scope="col">Manager</th>
-              <th scope="col">Employees</th>
               <th scope="col" class="text-end">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Sales</td>
-              <td>Mark Otto</td>
-              <td>12</td>
+           <tr *ngFor="let dep of departments() ; let i = index; trackBy: trackById">
+              <th scope="row">{{i +1}}</th>
+              <td>{{dep.name}}</td>
               <td class="text-end">
-                <button class="btn btn-sm btn-warning">Edit</button>
-                <button class="ms-2 btn btn-sm btn-danger">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Marketing</td>
-              <td>Jacob Thornton</td>
-              <td>8</td>
-              <td class="text-end">
-                <button class="btn btn-sm btn-danger">Edit</button>
-                <button class="ms-2 btn btn-sm btn-danger">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Engineering</td>
-              <td>John Doe</td>
-              <td>24</td>
-              <td class="text-end">
-                <button class="btn btn-sm  btn-danger">Edit</button>
+                <button class="btn btn-sm  btn-warning">Edit</button>
                 <button class="ms-2 btn btn-sm btn-danger">Delete</button>
               </td>
             </tr>
