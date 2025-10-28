@@ -20,7 +20,18 @@ app.UseCors("AllowAngularApp");
 app.MapGet("/", () => "Employee Department API");
 
 // --- Department Endpoints ---
+app.MapPost("/api/departments", async (CreateDepartmentDto dto, AppDbContext db) =>
+{
+    if (dto is null || string.IsNullOrWhiteSpace(dto.Name))
+        return Results.BadRequest(new { error = "Department name is required." });
 
+    var dep = new Department { Name = dto.Name.Trim() };
+    db.Departments.Add(dep);
+    await db.SaveChangesAsync();
+
+    // dep now has an Id assigned by the DB
+    return Results.Created($"/api/departments/{dep.Id}", dep);
+});
 app.MapGet("/api/departments", async (AppDbContext db) =>
     await db.Departments.ToListAsync());
 

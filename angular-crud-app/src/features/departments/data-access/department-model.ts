@@ -3,7 +3,6 @@ export interface Department {
   name: string;
 }
 export interface CreateDepartmentDto {
-  id: number;
   name: string;
 }
 export interface UpdateDepartmentDto {

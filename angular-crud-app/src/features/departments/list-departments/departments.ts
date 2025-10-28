@@ -2,10 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { Department } from '../data-access/department-model';
 import { DepartmentApi } from '../data-access/department.api';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-departments',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './departments.html',
   styleUrls: ['./departments.css'] 
 })

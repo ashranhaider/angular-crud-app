@@ -5,6 +5,7 @@ import { EmployeesComponent } from './features/employees/list-employees/employee
 import { DepartmentsComponent } from './features/departments/list-departments/departments';
 import { AddEmployee } from './features/employees/add-employee/add-employee/add-employee';
 import { EditEmployee } from './features/employees/edit-employee/edit-employee/edit-employee';
+import { AddDepartment } from './features/departments/add-department/add-department/add-department';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'departments',
     component: DepartmentsComponent
+  },
+  {
+    path: 'add-department',
+    component: AddDepartment
   },
   { path: '**', redirectTo: '' }
 ];
