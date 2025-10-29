@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DepartmentApi } from '../../data-access/department.api';
-import { Department } from '../../data-access/department-model';
+import { DepartmentApi } from '../data-access/department.api';
+import { Department } from '../data-access/department-model';
 
 @Component({
   selector: 'edit-department',
