@@ -10,5 +10,5 @@ export class DepartmentApi {
   get    = (id: number) => this.api.get<Department>(`/Departments/${id}`);
   create = (dto: CreateDepartmentDto) => this.api.post<Department>('/Departments', dto);
   update = (id: number, dto: UpdateDepartmentDto) => this.api.put<Department>(`/Departments/${id}`, dto);
-  remove = (id: number) => this.api.delete<void>(`/Departments/${id}`);
+  delete = (id: number) => this.api.delete<void>(`/Departments/${id}`);
 }

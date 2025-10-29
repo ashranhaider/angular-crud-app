@@ -46,6 +46,16 @@ app.MapPut("/api/departments/{id}", async (int id, CreateDepartmentDto dto, AppD
 
     return Results.Ok(dept);
 });
+app.MapDelete("/api/departments/{id:int}", async (int id, AppDbContext db) =>
+{
+    var dep = await db.Departments.FindAsync(id);
+    if (dep is null) return Results.NotFound();
+
+    db.Departments.Remove(dep);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
 app.MapGet("/api/departments", async (AppDbContext db) =>
     await db.Departments.ToListAsync());
 

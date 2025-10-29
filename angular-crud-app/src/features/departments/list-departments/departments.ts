@@ -3,17 +3,18 @@ import { Department } from '../data-access/department-model';
 import { DepartmentApi } from '../data-access/department.api';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
+import { DeleteDepartment } from "../delete-department/delete-department";
 
 @Component({
   selector: 'app-departments',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, DeleteDepartment],
   templateUrl: './departments.html',
-  styleUrls: ['./departments.css'] 
+  styleUrls: ['./departments.css']
 })
 export class DepartmentsComponent {
   private departmentApi = inject(DepartmentApi);
-  
-departments = signal<Department[]>([]);
+
+  departments = signal<Department[]>([]);
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
 
@@ -27,7 +28,7 @@ departments = signal<Department[]>([]);
 
     this.departmentApi.list().subscribe({
       next: (data) => {
-        
+
         this.departments.set(data);
         this.loading.set(false);
       },
@@ -39,4 +40,19 @@ departments = signal<Department[]>([]);
     });
   }
   trackById = (_: number, item: Department) => item.id;
+  
+  deleteOpen = false;
+  deleteId: number | null = null;
+
+  openDelete(id: number): void {
+    this.deleteId = id;
+    this.deleteOpen = true;
+  }
+
+  onDepartmentDeleted(id: number): void {
+    // Refresh list, or optimistically remove the row
+    this.loadDepartments();
+    //this.departments.set(this.departments().filter(d => d.id !== id));
+  }
+
 }
