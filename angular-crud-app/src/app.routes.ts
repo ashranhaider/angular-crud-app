@@ -6,6 +6,7 @@ import { DepartmentsComponent } from './features/departments/list-departments/de
 import { AddEmployee } from './features/employees/add-employee/add-employee/add-employee';
 import { EditEmployee } from './features/employees/edit-employee/edit-employee/edit-employee';
 import { AddDepartment } from './features/departments/add-department/add-department/add-department';
+import { EditDepartment } from './features/departments/edit-department/edit-department/edit-department';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'add-department',
     component: AddDepartment
+  },
+  {
+    path: 'edit-department/:id',
+    component: EditDepartment
   },
   { path: '**', redirectTo: '' }
 ];

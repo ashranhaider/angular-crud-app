@@ -32,6 +32,20 @@ app.MapPost("/api/departments", async (CreateDepartmentDto dto, AppDbContext db)
     // dep now has an Id assigned by the DB
     return Results.Created($"/api/departments/{dep.Id}", dep);
 });
+// --- Edit Department ---
+app.MapPut("/api/departments/{id}", async (int id, CreateDepartmentDto dto, AppDbContext db) =>
+{
+    if (dto is null || string.IsNullOrWhiteSpace(dto.Name))
+        return Results.BadRequest(new { error = "Department name is required." });
+
+    var dept = await db.Departments.FindAsync(id);
+    if (dept is null) return Results.NotFound();
+
+    dept.Name = dto.Name.Trim();
+    await db.SaveChangesAsync();
+
+    return Results.Ok(dept);
+});
 app.MapGet("/api/departments", async (AppDbContext db) =>
     await db.Departments.ToListAsync());
 
