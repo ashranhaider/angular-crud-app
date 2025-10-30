@@ -33,7 +33,7 @@
       <tbody>
         <tr *ngFor="let emp of employees() ; let i = index; trackBy: trackById">
           <td>{{ emp.id }}</td>
-          <td>{{ emp.id }}</td>
+          <td>{{ i }}</td>
           <td>{{ emp.fullName }}</td>
           <td>{{ emp.position }}</td>
           <td>{{ emp.department?.name ?? 'No department' }}</td>

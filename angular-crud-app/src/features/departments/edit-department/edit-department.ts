@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DepartmentApi } from '../data-access/department.api';
 import { Department } from '../data-access/department-model';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'edit-department',
@@ -16,6 +17,7 @@ export class EditDepartment {
   private api = inject(DepartmentApi);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   busy = false;
   loading = true;
@@ -69,10 +71,12 @@ export class EditDepartment {
     this.api.update(this.id, dto).subscribe({
       next: () => {
         this.busy = false;
+        this.toast.success('Department updated successfully.');
         this.router.navigate(['/departments']); // adjust to your list route
       },
       error: () => {
         this.busy = false;
+        this.toast.error('Department update failed.');
         // TODO: show toast/snackbar
       }
     });

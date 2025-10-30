@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, injec
 import { CommonModule } from '@angular/common';
 import { EmployeesApi } from '../data-access/employees.api';
 import { Employee } from '../data-access/employees.models';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'delete-employee',
@@ -12,6 +13,7 @@ import { Employee } from '../data-access/employees.models';
 })
 export class DeleteEmployee implements OnChanges {
   private api = inject(EmployeesApi);
+  private toast = inject(ToastService);
 
   /** Parent controls visibility */
   @Input() open = false;
@@ -65,11 +67,13 @@ export class DeleteEmployee implements OnChanges {
     this.api.delete(this.employeeId as number).subscribe({
       next: () => {
         this.deleting = false;
+        this.toast.success('Employee deleted successfully.');
         this.deleted.emit(this.employeeId as number);
         this.closed.emit();
       },
       error: () => {
         this.deleting = false;
+        this.toast.error('Failed to delete employee');
         this.error = 'Failed to delete employee.';
       }
     });

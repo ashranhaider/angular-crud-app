@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DepartmentApi } from '../data-access/department.api';
 import { CreateDepartmentDto } from '../data-access/department-model';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'add-department',
@@ -15,6 +16,7 @@ import { CreateDepartmentDto } from '../data-access/department-model';
 export class AddDepartment {
   private api = inject(DepartmentApi);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   busy = false;
 
@@ -38,11 +40,12 @@ export class AddDepartment {
     this.api.create(this.model).subscribe({
       next: () => {
         this.busy = false;
+        this.toast.success('Department created successfully.');
         this.router.navigate(['/departments']);
       },
       error: (err) => {
         this.busy = false;
-        console.error('Failed to create department', err.message);
+        this.toast.error('Failed to create department ' + err.message);
         // TODO: plug in your toast/snackbar service
         // this.toastr.error('Failed to create department');
       }
