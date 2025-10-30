@@ -3,10 +3,11 @@ import { EmployeesApi } from '../data-access/employees.api';
 import { Employee } from '../data-access/employees.models';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { DeleteEmployee } from "../delete-employee/delete-employee";
 
 @Component({
   selector: 'app-employees',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, DeleteEmployee],
   templateUrl: './employees.html',
   styleUrl: './employees.css'
 })
@@ -40,4 +41,18 @@ private employeesApi = inject(EmployeesApi);
     });
   }
   trackById = (_: number, item: Employee) => item.id;
+
+  deleteOpen = false;
+deleteId: number | null = null;
+
+openDelete(id: number): void {
+  this.deleteId = id;
+  this.deleteOpen = true;
+}
+
+onEmployeeDeleted(id: number): void {
+  // refresh from API OR optimistic remove:
+  this.employees.set(this.employees().filter(e => e.id !== id));
+}
+
 }

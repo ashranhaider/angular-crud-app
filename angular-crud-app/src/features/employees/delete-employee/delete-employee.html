@@ -1,0 +1,38 @@
+<!-- Render modal only when parent sets [open]="true" -->
+<div *ngIf="open" class="modal show d-block" tabindex="-1"
+     style="background-color: rgba(0,0,0,0.5)" role="dialog" aria-modal="true" aria-labelledby="delEmpTitle">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="delEmpTitle" class="modal-title">Delete Employee</h5>
+      </div>
+
+      <div class="modal-body">
+        <ng-container *ngIf="loading; else loaded">
+          <p>Loading…</p>
+        </ng-container>
+
+        <ng-template #loaded>
+          <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+          <ng-container *ngIf="!error">
+            <p>
+              Are you sure you want to delete
+              <strong>{{ employee?.fullName || ('ID ' + employeeId) }}</strong>
+              <span *ngIf="employee?.department?.name"> ({{ employee?.department?.name }})</span>?
+            </p>
+            <p class="text-danger small mb-0">This action cannot be undone.</p>
+          </ng-container>
+        </ng-template>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel()" [disabled]="deleting">No</button>
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()" [disabled]="deleting || !!error || loading">
+          <span *ngIf="!deleting">Yes, Delete</span>
+          <span *ngIf="deleting">Deleting…</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

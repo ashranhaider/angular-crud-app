@@ -39,10 +39,17 @@
           <td>{{ emp.department?.name ?? 'No department' }}</td>
           <td class="text-start">
                 <a class="btn btn-sm  btn-warning" routerLink="/editemployees/{{emp.id}}">Edit</a>
-                <button class="ms-2 btn btn-sm btn-danger">Delete</button>
+                <button class="ms-2 btn btn-sm btn-danger" (click)="openDelete(emp.id)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
   </ng-template>
 </div>
+
+<delete-employee
+  [open]="deleteOpen"
+  [employeeId]="deleteId"
+  (closed)="deleteOpen = false"
+  (deleted)="onEmployeeDeleted($event)">
+</delete-employee>

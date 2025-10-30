@@ -10,5 +10,5 @@ export class EmployeesApi {
   get    = (id: number) => this.api.get<Employee>(`/employees/${id}`);
   create = (dto: CreateEmployeeDto) => this.api.post<Employee>('/employees', dto);
   update = (id: number, dto: UpdateEmployeeDto) => this.api.put<Employee>(`/employees/${id}`, dto);
-  remove = (id: number) => this.api.delete<void>(`/employees/${id}`);
+  delete = (id: number) => this.api.delete<void>(`/employees/${id}`);
 }
