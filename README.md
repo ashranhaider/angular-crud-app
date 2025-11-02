@@ -40,11 +40,9 @@ This app manages two entities:
 
 ## 🖼️ Screenshots
 
-All screenshots are located in `public/images/screenshots`.
-
 | Home Page | Departments | Employees | Employee Form | Delete Employee |
 |------------|-------------|------------|----------------|----------------|
-| ![Home](public/images/screenshots/home.png) | ![Departments](public/images/screenshots/Departments.png) | ![Employees](public/images/screenshots/employees.png) | ![Form](public/images/screenshots/employee-form.png) | ![Delete](public/images/screenshots/delete-employee.png) |
+| ![Home](https://github.com/ashranhaider/angular-crud-app/blob/master/angular-crud-app/public/images/screenshots/home.png?raw=true) | ![Departments](https://github.com/ashranhaider/angular-crud-app/blob/master/angular-crud-app/public/images/screenshots/Departments.png?raw=true) | ![Employees](https://github.com/ashranhaider/angular-crud-app/blob/master/angular-crud-app/public/images/screenshots/employees.png?raw=true) | ![Form](https://github.com/ashranhaider/angular-crud-app/blob/master/angular-crud-app/public/images/screenshots/employee-form.png?raw=true) | ![Delete](https://github.com/ashranhaider/angular-crud-app/blob/master/angular-crud-app/public/images/screenshots/delete-employee.png?raw=true) |
 
 ---
 
@@ -101,6 +99,6 @@ The app runs at [http://localhost:4200](http://localhost:4200).
 - Ensure the backend is running before launching the Angular app.  
 - CORS is enabled for `http://localhost:4200` by default.  
 - Modify database connection in `appsettings.json` if needed.  
-- Place screenshots inside `public/images/screenshots/` to display properly in README.
+- Screenshots are hosted inside the public folder and referenced using absolute GitHub URLs.
 
 ---
