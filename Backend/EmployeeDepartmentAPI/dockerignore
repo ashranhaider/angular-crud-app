@@ -1,0 +1,17 @@
+# Ignore build output and local files
+bin/
+obj/
+**/.vs/
+**/.vscode/
+**/*.user
+**/*.suo
+**/*.csproj.user
+
+# Git and Node artifacts (if any)
+.git/
+.gitignore
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
